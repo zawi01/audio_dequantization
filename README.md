@@ -29,6 +29,9 @@ The other main file "dequantization_whole_database.m" serves to easily reproduce
 One can select algorithms (`alg_idxs`), sounds (`sound_idxs`), and word lengths (`wordlengths`) and run the experiments at once. 
 It is also possible to enable or disable storing the dequantized signals (`STORE_DEQ_SOUNDS`) or computing and storing values of the objective function (`STORE_OBJ_PROCESS`) and SDR (`STORE_dSDR_PROCESS`) in each iteration. 
 
+To reproduce the &Delta;SDR values from paper, enable the `paramsolver.dec_term` parameter, which terminates the algorithms after a SDR drop.
+On the other hand, to reproduce the PEMO-Q ODG values, let this parameter disabled and run full 500 iterations. 
+
 ### How to cite this toolbox
 Please cite the following paper:
 
