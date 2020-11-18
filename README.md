@@ -8,6 +8,8 @@ This readme file describes the MATLAB toolbox accompanying the article from the 
 
 ### Requirements
 The code has been developed in MATLAB version R2019b and it relies on the LTFAT toolbox (version 2.4.0 was used).
+To reproduce all the results from the paper, evaluate the dequantized signals using the PEMO-Q ([paper](https://ieeexplore.ieee.org/document/1709880), [website](https://www.hoertech.de/de/produkte/pemo-q.html)) metric. 
+Nevertheless, for running the dequantization tests, this software is not essential.
 
 ### Quick Tutorial
 To use this declipping toolbox, download all the files, add them to the MATLAB path and make sure that the LTFAT toolbox is properly installed.
