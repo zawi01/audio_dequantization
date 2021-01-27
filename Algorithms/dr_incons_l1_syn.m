@@ -30,7 +30,7 @@ cnt = 0;
 while cnt < paramsolver.maxit
     cnt = cnt + 1;
     
-    proj = proj_parse_frame(z, param.F, data_quantized, param.delta);
+    proj = proj_parse_frame(z, param.F, data_quantized, param.delta, param.algorithm);
     c = (1/(paramsolver.gamma + 1)) * (paramsolver.gamma * proj + z);
     z = z + (soft(2*c-z, paramsolver.gamma*paramsolver.lambda)-c);
     
@@ -63,7 +63,7 @@ while cnt < paramsolver.maxit
 end
 
 
-c = proj_parse_frame(z, param.F, data_quantized, param.delta); % final projection into the constraints
+c = proj_parse_frame(z, param.F, data_quantized, param.delta, param.algorithm); % final projection into the constraints
 data_rec = postpad(frsyn(param.F, c), param.Ls); % reconstructed signal
 
 end

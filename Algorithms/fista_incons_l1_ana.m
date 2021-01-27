@@ -35,7 +35,7 @@ cnt = 0;
 while cnt < paramsolver.maxit
     cnt = cnt + 1;
     
-    proj = proj_time(u, data_quantized, param.delta);
+    proj = proj_time(u, data_quantized, param.delta, param.algorithm);
       
     x_new = frsyn(param.F, soft(frana(param.F, u - paramsolver.mu * (u - proj)), paramsolver.mu*paramsolver.lambda));
     x_new = postpad(x_new, param.Ls);
@@ -74,4 +74,4 @@ while cnt < paramsolver.maxit
     
 end
 
-data_rec = proj_time(x, data_quantized, param.delta); % reconstructed signal
+data_rec = proj_time(x, data_quantized, param.delta, param.algorithm); % reconstructed signal

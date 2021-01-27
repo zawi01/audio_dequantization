@@ -210,18 +210,39 @@ if plot_results
     title('Restored')
     
     % Plot of dSDR and objective function
-    figure
-    len = length(dsdr_iter(~isnan(dsdr_iter)));
-    t = linspace(0, time, len);
-    yyaxis left
-    p1 = plot(t.',dsdr_iter(~isnan(dsdr_iter)));
-    hold on
-    ylabel('{\Delta}SDR (dB)');
-    
-    yyaxis right
-    p2 = plot(t.', obj_iter(~isnan(obj_iter)));
-    xlabel('time (s)');
-    ylabel('Objective function');
-    grid on
-    
+    if paramsolver.comp_dsdr && paramsolver.comp_obj
+        figure
+        len = length(dsdr_iter(~isnan(dsdr_iter)));
+        t = linspace(0, time, len);
+        yyaxis left
+        p1 = plot(t.',dsdr_iter(~isnan(dsdr_iter)));
+        hold on
+        ylabel('{\Delta}SDR (dB)');
+        
+        yyaxis right
+        p2 = plot(t.', obj_iter(~isnan(obj_iter)));
+        title('\Delta{}SDR and objective function over time');
+        xlabel('time (s)');
+        ylabel('Objective function');
+        grid on
+        
+    elseif paramsolver.comp_dsdr
+        figure
+        len = length(dsdr_iter(~isnan(dsdr_iter)));
+        t = linspace(0, time, len);
+        p1 = plot(t.',dsdr_iter(~isnan(dsdr_iter)));
+        title('\Delta{}SDR over time')
+        xlabel('time (s)');
+        ylabel('{\Delta}SDR (dB)');
+        
+    elseif paramsolver.comp_obj
+        figure
+        len = length(dsdr_iter(~isnan(dsdr_iter)));
+        t = linspace(0, time, len);
+        p2 = plot(t.', obj_iter(~isnan(obj_iter)));
+        title('Objective function over time')
+        xlabel('time (s)');
+        ylabel('Objective function');
+        
+    end
 end

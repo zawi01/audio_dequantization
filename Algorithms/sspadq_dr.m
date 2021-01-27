@@ -1,4 +1,4 @@
-function [data_rec, sdr_iter, obj_val] = sspadq_dr(data_quantized, param, paramsolver, data_orig)
+function [data_rec, sdr_iter, obj_val] = sspadq_dr(data_quantized, param, paramsolver, data_orig, gana)
 % SSPADQ_DR computes the synthesis version of declipping algorithm SPADQ.
 % 
 % Input parameters
@@ -20,6 +20,7 @@ function [data_rec, sdr_iter, obj_val] = sspadq_dr(data_quantized, param, params
 %                            comp_sdr  switch to enable computing SDR in each iteration
 %                            comp_obj  switch to enable storing the value of termination function in each iteration
 %       data_orig      vector of original clean signal used to compute SDR during iterations
+%       gana           analysis window used in the projection
 %
 % Output parameters
 %       data_rec       vector of restored (declipped) block of signal
@@ -71,7 +72,7 @@ while cnt <= paramsolver.maxit
     end
     
     % projection onto the set of feasible solutions
-    x_hat = proj_time(Dz_bar + u, data_quantized, param.delta);
+    x_hat = proj_time(Dz_bar + u, data_quantized, param.delta .* fftshift(gana), param.algorithm);
     
     % computation and storing of SDR and termination function if requested
     if paramsolver.comp_sdr

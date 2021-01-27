@@ -1,4 +1,4 @@
-function [data_rec, sdr_iter, obj_val] = aspadq(data_quantized, param, paramsolver, data_orig)
+function [data_rec, sdr_iter, obj_val] = aspadq(data_quantized, param, paramsolver, data_orig, gana)
 % ASPADQ computes the analysis version of dequantization algorithm SPADQ.
 % 
 % Input parameters
@@ -20,6 +20,7 @@ function [data_rec, sdr_iter, obj_val] = aspadq(data_quantized, param, paramsolv
 %                            comp_sdr   switch to enable computing SNR in each iteration
 %                            comp_obj   switch to enable storing the value of termination function in each iteration
 %       data_orig      vector of original clean signal used to compute SDR during iterations
+%       gana           analysis window used in the projection
 %
 % Output parameters
 %       data_rec       vector of restored (declipped) block of signal
@@ -71,7 +72,7 @@ while cnt <= paramsolver.maxit
     % projection onto the set of feasible solutions
     b = z_bar - u;
     syn = frsyn(param.F, b);
-    x_hat = proj_time(syn, data_quantized, param.delta);
+    x_hat = proj_time(syn, data_quantized, param.delta .* fftshift(gana), param.algorithm);
      
     % computation and storing of SDR and termination function if requested
     if paramsolver.comp_sdr

@@ -36,7 +36,7 @@ while cnt < paramsolver.maxit
     q = clip(q + paramsolver.sigma.*frana(param.F, x));
     
     p_old = p;
-    p = proj_time(p - paramsolver.zeta*postpad(frsyn(param.F, q), param.Ls), data_quantized, param.delta);
+    p = proj_time(p - paramsolver.zeta*postpad(frsyn(param.F, q), param.Ls), data_quantized, param.delta, param.algorithm);
     x = p + paramsolver.rho*(p - p_old);
         
     if paramsolver.comp_obj
@@ -63,6 +63,6 @@ while cnt < paramsolver.maxit
        
 end
 
-data_rec = proj_time(x, data_quantized, param.delta); % final projection into the constraints
+data_rec = proj_time(x, data_quantized, param.delta, param.algorithm); % final projection into the constraints
 
 end

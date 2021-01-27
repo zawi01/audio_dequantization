@@ -36,7 +36,7 @@ while cnt < paramsolver.maxit
     cnt = cnt + 1;
     
     syn = postpad(frsyn(param.F, z), param.Ls);
-    proj = proj_time(syn, data_quantized, param.delta);
+    proj = proj_time(syn, data_quantized, param.delta, param.algorithm);
     
     c_new = soft(z - paramsolver.mu * frana(param.F, syn - proj), paramsolver.mu * paramsolver.lambda);
     

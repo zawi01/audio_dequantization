@@ -1,4 +1,4 @@
-function proj = proj_time(x, xq, delta)
+function proj = proj_time(x, xq, delta, alg)
 % PROJ_TIME perfoms projection of vector x onto the set of feasible
 % solutions for the dequantization problem in the time domain.
 %
@@ -15,8 +15,13 @@ overstep_below = (xq - x) > delta/2;
 
 proj = x;
 
-proj(overstep_above) = xq(overstep_above) + delta/2 - eps;
-proj(overstep_below) = xq(overstep_below) - delta/2 + eps;
+if any(strcmp(alg, {'A_SPADQ', 'S_SPADQ', 'S_SPADQ_DR'}))
+    proj(overstep_above) = xq(overstep_above) + delta(overstep_above)/2 - eps;
+    proj(overstep_below) = xq(overstep_below) - delta(overstep_below)/2 + eps;
+else
+    proj(overstep_above) = xq(overstep_above) + delta/2 - eps;
+    proj(overstep_below) = xq(overstep_below) - delta/2 + eps;
+end
 
 proj(abs(proj)>1) = 1*sign(proj(abs(proj)>1));
 

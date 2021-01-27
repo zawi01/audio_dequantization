@@ -1,4 +1,4 @@
-function [proj] = proj_parse_frame(c, F, data_quantized, delta)
+function [proj] = proj_parse_frame(c, F, data_quantized, delta, alg)
 % PROJ_PARSE_FRAME perfoms projection of coefficients c
 % onto a multidimensional interval for the use of audio dequantization.
 % 
@@ -24,7 +24,7 @@ function [proj] = proj_parse_frame(c, F, data_quantized, delta)
 syn = postpad(frsyn(F, c), length(data_quantized));
 
 % Compute proj(Az)
-proj_temp = proj_time(syn, data_quantized, delta);
+proj_temp = proj_time(syn, data_quantized, delta, alg);
 
 % Final projection
 proj = c - frana(F, syn-proj_temp);

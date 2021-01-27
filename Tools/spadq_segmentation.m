@@ -76,11 +76,11 @@ for n=0:N-1
     % perform SPADQ
     switch param.algorithm
         case {'A_SPADQ'}
-           [data_rec_block, sdr_iter(:,n+1), obj_iter(:,n+1)] = aspadq(data_block, param_seg, paramsolver, data_orig_block);
+           [data_rec_block, sdr_iter(:,n+1), obj_iter(:,n+1)] = aspadq(data_block, param_seg, paramsolver, data_orig_block, gana);
         case {'S_SPADQ'}
-           [data_rec_block, sdr_iter(:,n+1), obj_iter(:,n+1)] = sspadq(data_block, param_seg, paramsolver, data_orig_block);
+           [data_rec_block, sdr_iter(:,n+1), obj_iter(:,n+1)] = sspadq(data_block, param_seg, paramsolver, data_orig_block, gana);
         case {'S_SPADQ_DR'}
-           [data_rec_block, sdr_iter(:,n+1), obj_iter(:,n+1)] = sspadq_dr(data_block, param_seg, paramsolver, data_orig_block); 
+           [data_rec_block, sdr_iter(:,n+1), obj_iter(:,n+1)] = sspadq_dr(data_block, param_seg, paramsolver, data_orig_block, gana); 
     end
     
     % Folding blocks together using Overlap-Add approach (OLA)

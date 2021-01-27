@@ -31,7 +31,7 @@ cnt = 0;
 while cnt < paramsolver.maxit
     cnt = cnt + 1;
     
-    proj = proj_time(u, data_quantized, param.delta);
+    proj = proj_time(u, data_quantized, param.delta, param.algorithm);
     x = (1/(paramsolver.gamma + 1)) * (paramsolver.gamma * proj + u);
     
     syn = postpad(frsyn(param.F, soft(frana(param.F, 2*x-u), paramsolver.gamma*paramsolver.lambda)), param.Ls);
@@ -65,6 +65,6 @@ while cnt < paramsolver.maxit
 end
 
 
-data_rec = proj_time(x, data_quantized, param.delta); % final projection into the constraints
+data_rec = proj_time(x, data_quantized, param.delta, param.algorithm); % final projection into the constraints
 
 end
