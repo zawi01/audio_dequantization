@@ -4,7 +4,10 @@ Audio Dequantization Using (Co)Sparse (Non)Convex Methods
 [Pavel Záviška](https://orcid.org/0000-0003-2221-2058), [Pavel Rajmic](https://orcid.org/0000-0002-8381-4442), and [Ondřej Mokrý](https://orcid.org/0000-0003-1806-5809)
 ------------------------------------------------------------------------
 
-This readme file describes the MATLAB toolbox accompanying the article from the title.
+This readme file describes the MATLAB toolbox accompanying the article from the title.  
+Published version of the article is available at https://ieeexplore.ieee.org/document/9414637.  
+Postprint is also available at https://arxiv.org/abs/2010.16386.
+
 
 ### Requirements
 The code has been developed in MATLAB version R2019b and it relies on the LTFAT toolbox (version 2.4.0 was used).
@@ -37,12 +40,13 @@ On the other hand, to reproduce the PEMO-Q ODG values, let this parameter disabl
 ### How to cite this toolbox
 Please cite the following paper:
 
-P. Záviška, P. Rajmic, and O. Mokrý:
-Audio Dequantization Using (Co)Sparse (Non)Convex Methods.
-Available at https://arxiv.org/abs/2010.16386.
+P. Záviška, P. Rajmic and O. Mokrý, 
+"Audio Dequantization Using (Co)Sparse (Non)Convex Methods," 
+in *2021 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)*, 
+2021, pp. 701-705, doi: 10.1109/ICASSP39728.2021.9414637.
 
 ### License
 The code of this toolbox is distributed under the terms of the GNU Public License version 3 (http://www.gnu.org/licenses/gpl.txt).
 
 --------------------------------------------------
-Pavel Záviška, Brno University of Technology, 2020
+Pavel Záviška, Brno University of Technology, 2021
