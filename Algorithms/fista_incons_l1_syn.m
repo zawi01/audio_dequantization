@@ -50,7 +50,7 @@ while cnt < paramsolver.maxit
    
     if paramsolver.comp_obj % computing objective function (lambda * l1 norm of coefficients + distance function from the feasible set)
         data_rec_tmp = postpad(frsyn(param.F, c), param.Ls); % reconstructed signal
-        obj_func(cnt) = paramsolver.lambda * norm(c, 1) + norm(data_rec_tmp - proj_time(data_rec_tmp, data_quantized, param.delta), 2).^2; 
+        obj_func(cnt) = paramsolver.lambda * norm(c, 1) + norm(data_rec_tmp - proj_time(data_rec_tmp, data_quantized, param.delta, param.algorithm), 2).^2; 
     end
     
     if paramsolver.comp_dsdr || paramsolver.dsdr_decterm

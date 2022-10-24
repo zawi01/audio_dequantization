@@ -49,7 +49,7 @@ while cnt < paramsolver.maxit
     
    
     if paramsolver.comp_obj % computing objective function (lambda * l1 norm of coefficients + distance function from the feasible set)
-        obj_func(cnt) = paramsolver.lambda * norm(frana(param.F, x), 1) + norm(x - proj_time(x, data_quantized, param.delta), 2).^2; 
+        obj_func(cnt) = paramsolver.lambda * norm(frana(param.F, x), 1) + norm(x - proj_time(x, data_quantized, param.delta, param.algorithm), 2).^2; 
     end
     
     if paramsolver.comp_dsdr || paramsolver.dsdr_decterm
